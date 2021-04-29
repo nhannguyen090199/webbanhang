@@ -74,14 +74,14 @@
                 <div class="kt-portlet__body">
                     <form class="kt-form kt-form--fit filterForm" name="filterForm" method="get">
                         <input type="hidden" name="page" value="{{ app('request')->input('page', '1') }}"/>
-                        <input type="hidden" name="_limit" value="{{ $limit }}"/>
-                        <input type="hidden" name="_order_by" value="{{ $orderBy }}"/>
-                        <input type="hidden" name="_order_type" value="{{ $orderType }}"/>
+                        <input type="hidden" name="_limit" value=""/>
+                        <input type="hidden" name="_order_by" value=""/>
+                        <input type="hidden" name="_order_type" value=""/>
 
                         <div class="row kt-margin-b-20">
                             <div class="col-md-4 kt-margin-b-10-tablet-and-mobile">
                                 <label>@lang('admin.common.category'):</label>
-                                {!! Form::select('category_id', $selectCategory, app('request')->input('category_id', ''), ['class'=>'form-control', 'required']) !!}
+                                {{Form::select('category', $selectCategory, null,['class' => 'form-control'])}}
                             </div>
                             <div class="col-md-4 kt-margin-b-10-tablet-and-mobile">
                                 <label>@lang('admin.common.keyword'):</label>
@@ -105,7 +105,7 @@
                             {{--Using the most basic table markup, here’s how tables look in Metronic:--}}
                         </span>
                         <div class="kt-section__content table-content">
-                            @include($route.'.index_table')
+{{--                            @include($route.'.index_table')--}}
                         </div>
                     </div>
                     <!--end::Section-->
