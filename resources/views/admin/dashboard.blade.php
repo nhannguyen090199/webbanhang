@@ -1,4 +1,4 @@
-@extends('admin.layout')
+ @extends('admin.layout')
 
 @section('header')
     <title>{{ config('app.name', 'Laravel') }} | @lang('admin/dashboard.dashboard')</title>

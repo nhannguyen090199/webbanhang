@@ -46,43 +46,43 @@ return [
                     ['title' => 'publish', 'action' => 'publish', 'icon' => 'fa-check'],
                 ],
             ],
-            [
-                'title' => 'brand',
-                'route' => 'admin.shop.brand',
-                'permission' => [
-                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
-                    ['title' => 'create', 'action' => 'create', 'icon' => 'fa-plus'],
-                    ['title' => 'Update', 'action' => 'update', 'icon' => 'fa-file'],
-                    ['title' => 'delete', 'action' => 'delete', 'icon' => 'fa-trash'],
-                    ['title' => 'publish', 'action' => 'publish', 'icon' => 'fa-check'],
-                ],
-            ],
-            [
-                'title' => 'store',
-                'route' => 'admin.shop.store',
-                'permission' => [
-                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
-                    ['title' => 'create', 'action' => 'create', 'icon' => 'fa-plus'],
-                    ['title' => 'Update', 'action' => 'update', 'icon' => 'fa-file'],
-                    ['title' => 'delete', 'action' => 'delete', 'icon' => 'fa-trash'],
-                    ['title' => 'publish', 'action' => 'publish', 'icon' => 'fa-check'],
-                ],
-            ],
-            [
-                'title' => 'statistic',
-                'route' => 'admin.shop.statistic',
-                'permission' => [
-                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
-                ],
-            ],
-            [
-                'title' => 'config',
-                'route' => 'admin.shop.config',
-                'permission' => [
-                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
-                    ['title' => 'edit', 'action' => 'edit', 'icon' => 'fa-file'],
-                ],
-            ],
+//            [
+//                'title' => 'brand',
+//                'route' => 'admin.shop.brand',
+//                'permission' => [
+//                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
+//                    ['title' => 'create', 'action' => 'create', 'icon' => 'fa-plus'],
+//                    ['title' => 'Update', 'action' => 'update', 'icon' => 'fa-file'],
+//                    ['title' => 'delete', 'action' => 'delete', 'icon' => 'fa-trash'],
+//                    ['title' => 'publish', 'action' => 'publish', 'icon' => 'fa-check'],
+//                ],
+//            ],
+//            [
+//                'title' => 'store',
+//                'route' => 'admin.shop.store',
+//                'permission' => [
+//                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
+//                    ['title' => 'create', 'action' => 'create', 'icon' => 'fa-plus'],
+//                    ['title' => 'Update', 'action' => 'update', 'icon' => 'fa-file'],
+//                    ['title' => 'delete', 'action' => 'delete', 'icon' => 'fa-trash'],
+//                    ['title' => 'publish', 'action' => 'publish', 'icon' => 'fa-check'],
+//                ],
+//            ],
+//            [
+//                'title' => 'statistic',
+//                'route' => 'admin.shop.statistic',
+//                'permission' => [
+//                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
+//                ],
+//            ],
+//            [
+//                'title' => 'config',
+//                'route' => 'admin.shop.config',
+//                'permission' => [
+//                    ['title' => 'view', 'action' => 'view', 'icon' => 'fa-list'],
+//                    ['title' => 'edit', 'action' => 'edit', 'icon' => 'fa-file'],
+//                ],
+//            ],
         ],
     ],
 //    'contact' => [

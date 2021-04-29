@@ -17,15 +17,15 @@ Route::get('/', function (){
     return view('admin.dashboard');
 })->name('admin.dashboard');
 
-Route::group(['prefix'=>'shop', 'namespace'=>'Shop', 'as'=>'shop.'  ],function(){
-    Route::resource('oder',function (){} ,[
+Route::group(['prefix'=>'shop', 'namespace'=>'Shop', 'as'=>'admin.shop.'],function(){
+    Route::resource('order','OrderController',[
         'names' => [
-            'index' => 'oder',
-            'edit' => 'oder.edit',
-            'create' => 'oder.create',
-            'store' => 'oder.store',
-            'show' => 'oder.show',
-            'update' => 'oder.update',
-            'destroy' => 'oder.destroy',
+            'index' => 'order',
+            'edit' => 'order.edit',
+            'create' => 'order.create',
+            'store' => 'order.store',
+            'show' => 'order.show',
+            'update' => 'order.update',
+            'destroy' => 'order.destroy',
         ]]);
 });
