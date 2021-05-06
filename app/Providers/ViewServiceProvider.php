@@ -4,6 +4,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
+use App\Models\
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,7 @@ class ViewServiceProvider extends ServiceProvider
     {
         view()->composer('*', function ($view) use ($request)
         {
+
             if ($request->is('admin*')) {
                 $view->with('admin_module', config('module'));
             }
