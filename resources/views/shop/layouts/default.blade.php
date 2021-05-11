@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Trang chủ</title>
+    <meta name="csrf-token" content="{{csrf_token()}}" >
+    <meta name="url_base" content="{{url('')}}">
+    <title>@yield('title')</title>
     <link href="{{url('assets/shop/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/shop/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{url('assets/shop/css/prettyPhoto.css')}}" rel="stylesheet">
@@ -13,18 +15,24 @@
     <link href="{{url('assets/shop/css/animate.css')}}" rel="stylesheet">
     <link href="{{url('assets/shop/css/main.css')}}" rel="stylesheet">
     <link href="{{url('assets/shop/css/responsive.css')}}" rel="stylesheet">
+    <link href="{{url('assets/lib/sweetalert2/sweetalert2.css')}}" rel="stylesheet">
     <!--[if lt IE 9]>
+
     <script src="{{url('assets/shop/js/html5shiv.js')}}"></script>
     <script src="{{url('assets/shop/js/respond.min.js')}}"></script>
+
     <![endif]-->
+
     <link rel="shortcut icon" href="{{url('assets/shop/images/ico/favicon.ico')}}">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{url('assets/shop/images/ico/apple-touch-icon-144-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{url('assets/shop/images/ico/apple-touch-icon-114-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{url('assets/shop/images/ico/apple-touch-icon-72-precomposed.png')}}">
     <link rel="apple-touch-icon-precomposed" href="{{url('assets/shop/images/ico/apple-touch-icon-57-precomposed.png')}}">
+
 </head><!--/head-->
 
 <body>
+@yield('header')
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">
@@ -32,8 +40,8 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i> 0973578613</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i> nguyenducnhan159@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -53,49 +61,7 @@
     </div><!--/header_top-->
 
     <div class="header-middle"><!--header-middle-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="logo pull-left">
-                        <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
-                    </div>
-                    <div class="btn-group pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                USA
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canada</a></li>
-                                <li><a href="#">UK</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                DOLLAR
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canadian Dollar</a></li>
-                                <li><a href="#">Pound</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
-                            <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                            <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @include('shop/layouts/header_middle')
     </div><!--/header-middle-->
 
     <div class="header-bottom"><!--header-bottom-->
@@ -125,7 +91,9 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
+                        <form action="{{route('shop.search')}}" method="get">
+                            <input type="text" placeholder="Search" name="keyword" value="{{request()->input('keyword') ? request()->input('keyword'): ''  }}" required/>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -134,70 +102,7 @@
 </header><!--/header-->
 
 @yield('slide')
-<section id="slider"><!--slider-->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#slider-carousel" data-slide-to="1"></li>
-                        <li data-target="#slider-carousel" data-slide-to="2"></li>
-                    </ol>
 
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>Free E-Commerce Template</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/girl1.jpg" class="girl img-responsive" alt="" />
-                                <img src="images/home/pricing.png"  class="pricing" alt="" />
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>100% Responsive Design</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/girl2.jpg" class="girl img-responsive" alt="" />
-                                <img src="images/home/pricing.png"  class="pricing" alt="" />
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="col-sm-6">
-                                <h1><span>E</span>-SHOPPER</h1>
-                                <h2>Free Ecommerce Template</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                <button type="button" class="btn btn-default get">Get it now</button>
-                            </div>
-                            <div class="col-sm-6">
-                                <img src="images/home/girl3.jpg" class="girl img-responsive" alt="" />
-                                <img src="images/home/pricing.png" class="pricing" alt="" />
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
-                        <i class="fa fa-angle-left"></i>
-                    </a>
-                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section><!--/slider-->
 
 <main>
 
@@ -206,57 +111,60 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Category</h2>
+                    <h2>LOẠI SẢN PHẨM</h2>
                     <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        @foreach($categoris as $category)
+                            @if($category->parent_id === 0)
+                                <?php $is_parent=0 ?>
+                                @foreach($categoris as $cate)
+                                    @if($cate->parent_id == $category->id)
+                                        <?php $is_parent++ ?>
+                                    @endif
+                                @endforeach
 
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Kids</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Fashion</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Households</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Interiors</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Clothing</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Bags</a></h4>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title"><a href="#">Shoes</a></h4>
-                            </div>
-                        </div>
+                                @if(!$is_parent)
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title"><a href="{{asset($category->id.'/category')}}">{{$category->title}}</a></h4>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h4 class="panel-title">
+                                                <a data-toggle="collapse" data-parent="#accordian" href="#{{$category->id}}">
+                                                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                                    {{$category->title}}
+                                                </a>
+                                            </h4>
+                                        </div>
+                                        <div id="{{$category->id}}" class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <ul>
+                                                    @foreach($categoris as $cate_child)
+                                                        @if($cate_child->parent_id == $category->id)
+                                                            <li><a href="{{asset($cate_child->id.'/category')}}">{{$cate_child->title}}</a></li>
+                                                        @endif
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                @endif
+                            @endif
+                        @endforeach
+
+
                     </div><!--/category-products-->
 
                     <div class="brands_products"><!--brands_products-->
-                        <h2>Brands</h2>
+                        <h2>Hãng</h2>
                         <div class="brands-name">
                             <ul class="nav nav-pills nav-stacked">
-                                <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
-                                <li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-                                <li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
-                                <li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
-                                <li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
-                                <li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-                                <li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+                                @foreach($brands as $brand)
+                                <li><a href="#"> <span class="pull-right">({{$brand->product->count()}})</span>{{$brand->title}}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div><!--/brands_products-->
@@ -268,135 +176,6 @@
 
             <div class="col-sm-9 padding-right">
                 @yield('content')
-                <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Features Items</h2>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="assets/shop/images/home/product1.jpg" alt="" />
-                                    <p class="price">$56</p>
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="assets/shop/images/home/product2.jpg" alt="" />
-                                    <div class="row">
-                                        <div class="col-md-7" style="padding: 0px 5px"><p class="price" >1.000.000 VND</p></div>
-                                        <div class="col-md-5" style="padding: 0px 5px"><p class="listed-price" >1.000.000 VND</p></div>
-                                    </div>
-
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-                                <img src="assets/shop/images/home/sale.png" class="new" alt="" />
-
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="assets/shop/images/home/product3.jpg" alt="" />
-                                    <p class="price">$56</p>
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="assets/shop/images/home/product4.jpg" alt="" />
-                                    <p class="price">$56</p>
-
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-
-                                <img src="images/home/new.png" class="new" alt="" />
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="assets/shop/images/home/product5.jpg" alt="" />
-                                    <p class="price">$56</p>
-
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-
-                                <img src="images/home/sale.png" class="new" alt="" />
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="product-image-wrapper">
-                            <div class="single-products">
-                                <div class="productinfo text-center">
-                                    <img src="assets/shop/images/home/product6.jpg" alt="" />
-                                    <p class="price">$56</p>
-
-                                    <p>Easy Polo Black Edition</p>
-                                    <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </div>
-
-                            </div>
-                            <div class="choose">
-                                <ul class="nav nav-pills nav-justified">
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!--features_items-->
-
                 <div class="recommended_items"><!--recommended_items-->
                     <h2 class="title text-center">Sản phẩm được đề xuất</h2>
 
@@ -667,5 +446,11 @@
 <script src="{{url('assets/shop/js/price-range.js')}}"></script>
 <script src="{{url('assets/shop/js/jquery.prettyPhoto.js')}}"></script>
 <script src="{{url('assets/shop/js/main.js')}}"></script>
+<script src="{{url('assets/lib/sweetalert2/sweetalert2.all.js')}}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js" type="text/javascript"></script>
+<script src="{{url('assets/shop/js/cart/cart.js')}}"></script>
+
+@yield('footer')
 </body>
 </html>

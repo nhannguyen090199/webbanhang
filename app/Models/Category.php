@@ -10,6 +10,7 @@ class Category extends Model
     protected $table ='shop_category';
     protected $fillable = [
         'title',
+        'parent_id',
         'image',
         'introtext',
         'fulltext',
